@@ -1,0 +1,28 @@
+	<div class="row">
+        <div class="col-md-12 bck-image image2"></div>
+        <div class="col-md-12">
+          <div>
+            <div>
+              <h2>Prochaines dates</h2>
+              <table class="table" ng-if="concerts.length">
+              	<thead>
+              		<tr>
+              			<th>Date</th>
+              			<th>Adresse</th>
+              			<th>Prix</th>
+              			<th>#</th>
+              		</tr>
+              		<tr ng-repeat="concert in concerts">
+              			<td>//concert.concertDate | date:'dd-MM-yyyy'// //concert.concertHeure | date:'HH:mm'//</td>
+              			<td>//concert.concertLieu//</td>
+              			<td>//concert.concertPrix//</td>
+              			<td><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></td>
+              		</tr>
+			  			</table>
+							<div class="text-center" ng-if="concerts.length == 0">
+								Pas de concert de prévu :(
+							</div>
+            </div>
+          </div>
+        </div>
+      </div>

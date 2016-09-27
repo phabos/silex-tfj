@@ -1,0 +1,7 @@
+<form action="{{ url('contact') }}" method="post" id="contact-form">
+    {{ form_row(form._token) }}
+    {{ form_widget(form.email, {'attr': {'placeholder': 'Votre email'}}) }}
+    {{ form_widget(form.message, {'attr': {'placeholder': 'Votre message'}}) }}
+    <input type="submit" value="Envoyer" id="submit_form" />
+</form>
+<div id="thanks2" style="opacity:0;"><i class="fa fa-paper-plane"></i></div>

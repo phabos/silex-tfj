@@ -1,0 +1,10 @@
+{% block nextconcert %}
+	{% if concert.id > 0 %}
+		<strong>{{concert.datec  | date("m/d/Y")}} : </strong>{{concert.lieu}} {{concert.heure | date("H:i")}}
+		{% if concert.gmaps is not empty %}
+			<a class="gmaps" href="{{concert.gmaps}}" onclick="TF.openGmapsPopup($(this)); return false;"><i class="fa fa-map-marker"></i></a>
+		{% endif %}
+	{% else %}
+		Pas de concert prévu... :(
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+    <h1 class="page-header">Concerts <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalConcert"><span class="glyphicon glyphicon-plus"></span>Ajouter un concert</button></h1>
+    {% if concerts %}
+	    <table class="table table-striped">
+	      <thead>
+	        <tr>
+	          <th>#</th>
+	          <th>Date</th>
+	          <th>Lieu</th>
+	          <th>Prix</th>
+	          <th>Modifier</th>
+	          <th>Gmaps</th>
+	          <th>#</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        {% for concert in concerts %}
+		        <tr>
+		          <th scope="row">{{concert.id}}</th>
+		          <td>{{concert.datec|date("m/d/Y")}} | {{concert.heure|date("H:i")}}</td>
+		          <td>{{concert.lieu}}</td>
+		          <td>{{concert.prix}}</td>
+		          <td><a href="{{path('adminconcertedit', {id: concert.id})}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+		          <td>
+		          	{% if concert.gmaps is not empty %}
+						<a class="gmaps" href="{{concert.gmaps}}" onclick="TFAdmin.openGmapsPopup($(this)); return false;"><i class="glyphicon glyphicon-map-marker"></i></a>
+					{% else %}
+						<strike><i class="glyphicon glyphicon-map-marker"></i></strike>
+					{% endif %}
+				  </td>
+				  <td><a href="{{path('adminconcertdelete', {id: concert.id})}}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
+		        </tr>
+		    {% endfor %}
+	      </tbody>
+	    </table>
+    {% else %}
+    	No concert bro ! :-(
+    {% endif %}
+    {{ include('admin/adminGmapsPopup.html') }}
+    {{ include('admin/adminAddConcertForm.html', {form : form}) }}
+{% endblock %}

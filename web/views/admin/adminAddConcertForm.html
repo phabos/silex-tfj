@@ -1,0 +1,40 @@
+	<div class="modal fade" id="ModalConcert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2>Ajouter un Concert</h2>
+	        <form action="{{ url('adminconcerts') }}" method="post" {{ form_enctype(form) }}>
+		      <div class="modal-body">
+				    {{ form_row(form._token) }}
+				    <div class="form-group">
+			    		<label for="Titre">Date</label>
+				    	{{ form_widget(form.datec, {'attr': {'placeholder': 'Date'}}) }}
+				    </div>
+				    <div class="form-group">
+			    		<label for="year">Heure</label>
+				    	{{ form_widget(form.heure, {'attr': {'placeholder': 'Heure'}}) }}
+				    </div>
+				    <div class="form-group">
+			    		<label for="year">lieu</label>
+				    	{{ form_widget(form.lieu, {'attr': {'placeholder': 'Lieu', 'class': 'form-control'}}) }}
+				    </div>
+				    <div class="form-group">
+			    		<label for="year">prix</label>
+				    	{{ form_widget(form.prix, {'attr': {'placeholder': 'Prix', 'class': 'form-control'}}) }}
+				    </div>
+				    <div class="form-group">
+			    		<label for="year">gmaps</label>
+				    	{{ form_widget(form.gmaps, {'attr': {'placeholder': 'Gmaps', 'class': 'form-control'}}) }}
+				    </div>
+			    <div class="clearfix"></div><br/>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <input type="submit" name="Upload File" class="btn btn-primary" />
+		      </div>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>

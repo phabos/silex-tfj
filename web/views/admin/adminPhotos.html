@@ -1,0 +1,20 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+	<h1 class="page-header">Liste des photos <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ModalPhoto"><span class="glyphicon glyphicon-plus"></span>Ajouter une photo</button></h1>
+    {% if photos %}
+		{% for year in photos|keys %}
+			<h1>{{year}}</h1>
+			<div class="photo-gallery">
+	            {% for photo in photos[year] %}
+					<div class="img-thumbnail">
+				    	<img alt="" src="{{app.asset_path}}galerie/R_{{photo.name}}" /><br/>
+				    	<a href="{{path('admindeletephotos', {id: photo.id})}}"><span class="glyphicon glyphicon-remove"></span> supprimer</a><br/>
+				    	<a href="{{app.asset_path}}galerie/{{photo.name}}"><span class="glyphicon glyphicon-zoom-in"></span> voir</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="clear"></div><br/>
+		{% endfor %}
+	{% endif %}
+	{{ include('admin/adminAddPhotoForm.html', {form: form}) }}
+{% endblock %}

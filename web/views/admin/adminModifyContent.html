@@ -1,0 +1,24 @@
+<form action="{{ url('adminmodifier', {name: page}) }}" method="post" {{ form_enctype(form) }} onsubmit="TFAdmin.onContentSubmit();">
+	<div class="modal-body">
+	    {{ form_row(form._token) }}
+		<div class="form-group">
+	    	<label for="Titre">Titre</label>
+		   	{{ form_widget(form.titre, {'attr': {'placeholder': 'Titre', 'class': 'form-control'}}) }}
+		</div>
+		<div class="form-group">
+	    	{{ form_widget(form.content, {'attr': {'class': 'form-control'}, 'id': 'eg-textarea'}) }}
+		</div>
+	    {{ form_widget(form.url) }}
+	    <div class="clearfix"></div><br/>
+    </div>
+    <a href="{{ url('adminhome') }}" type="button" class="btn btn-default" data-dismiss="modal">Retour</a>
+    <input type="submit" name="Envoyer" class="btn btn-primary" />
+</form>
+
+<script>
+  $(function() {
+    $('textarea#eg-textarea').editable({
+      inlineMode: false
+    })
+  });
+</script>

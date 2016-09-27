@@ -1,0 +1,6 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+    <h1 class="page-header">Modifier le contenu {{page}}</h1>
+	{{ include('admin/adminModifyContent.html', {form : form, page : page}) }}
+	<div class="clear"></div><br/>
+{% endblock %}

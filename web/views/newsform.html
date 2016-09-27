@@ -1,0 +1,6 @@
+<form action="{{ url('newsletter') }}" method="post" id="NewsletterAddemailForm">
+    {{ form_row(form._token) }}
+    {{ form_widget(form.email, {'attr': {'placeholder': 'Votre email'}}) }}
+    <input type="submit" value="S'inscrire" id="submit_form" />
+</form>
+<div id="thanks" style="opacity:0;"><i class="fa fa-heart"></i></div>

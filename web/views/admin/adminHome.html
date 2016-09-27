@@ -1,0 +1,10 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+    <h1 class="page-header">Contenu</h1>
+	Modifier le contenu :
+	<ul>
+    	{% for key, url in urls %}
+        	<li><a href="modifier/{{ url }}">{{ key }}</a></li>
+    	{% endfor %}
+	</ul>
+{% endblock %}

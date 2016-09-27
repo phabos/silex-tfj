@@ -1,0 +1,20 @@
+{% block photos %}
+	<h1>PHOTOS</h1>
+	{% if photos %}
+		{% for year in photos|keys %}
+			<h1>{{year}}</h1>
+			<div class="photo-gallery">
+	            <ul>
+	            	{% for photo in photos[year] %}
+		            	<li>
+							<a href="{{app.asset_path}}galerie/{{photo.name}}" title="{{photo.titre}}">
+								<img width="100" alt="" src="{{app.asset_path}}galerie/R_{{photo.name}}" />
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="clear"></div><br/>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

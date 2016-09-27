@@ -1,0 +1,29 @@
+{% block concerts %}
+	<h1>Concerts</h1>
+	{% if concerts %}
+		<table class="grid">
+		{% for concert in concerts %}
+			<tr {% if((loop.index%2)==0) %} class="alt" {% endif %} >
+				<td>
+					{{concert.datec  | date("m/d/Y")}}<br/>{{concert.heure | date("H:i")}}
+				</td>
+				<td>
+					{{concert.lieu}} 
+				</td>
+				<td>
+					{{concert.prix}} 
+				</td>
+				<td>
+					{% if concert.gmaps is not empty %}
+						<a class="gmaps" href="{{concert.gmaps}}" onclick="TF.openGmapsPopup($(this)); return false;"><i class="fa fa-map-marker"></i></a>
+					{% else %}
+						-
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		Pas de concert prévu... :(
+	{% endif %}
+{% endblock %}

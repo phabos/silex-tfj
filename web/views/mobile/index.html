@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TF-Jass Mobile</title>
+
+    <link href="{{ app.asset_path }}css/bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ app.asset_path }}css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ app.asset_path }}css/tf-mobile.css" rel="stylesheet" type="text/css" />
+    <link href="{{ app.asset_path }}css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="{{ app.asset_path }}angular/angular.js"></script>
+    <script src="{{ app.asset_path }}angular/nganimate.min.js"></script>
+    <script src="{{ app.asset_path }}angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="{{ app.asset_path }}angular/angular-route.min.js"></script>
+    <script src="{{ app.asset_path }}js/buzz.js" type="text/javascript" ></script>
+    <script src="{{ app.asset_path }}js/buzz_player.js" type="text/javascript" ></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="tfjassApp" ng-class="openClassVar">
+    <div class="menu-wrap">
+      <nav class="menu">
+        <div class="icon-list">
+          <a ng-href="#/" ng-click="openClassVar=''"><i class="fa fa-reply"></i><span>Accueil</span></a>
+          <a ng-href="#/concert" ng-click="openClassVar=''"><i class="fa fa-bullhorn"></i><span>Concerts</span></a>
+          <a ng-href="#/biographie" ng-click="openClassVar=''"><i class="fa fa-road"></i><span>Biographie</span></a>
+          <a ng-href="#/contact" ng-click="openClassVar=''"><i class="fa fa-paper-plane"></i><span>Contact</span></a>
+          <a ng-click="mutesound()" ng-controller="soundController"><i class="fa fa-music"></i><span>Sound //sound//</span></a>
+        </div>
+      </nav>
+      <button class="close-button" ng-click="openClassVar=''">Close Menu</button>
+    </div>
+    <button class="menu-button" ng-click="openClassVar='show-menu'">Open Menu</button>
+
+    <nav class="navbar navbar-default navbar-fixed-top text-center">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1 class="title">TF JASS</h1>
+        </div>
+      </div>
+    </nav>
+
+    <div loading-spinner ng-show="!spinnerHide" class="ajax-spinner"></div>
+
+    <div class="container classic-content" ng-show="spinnerHide" ng-view></div>
+
+    <script>
+      var player = new Player();
+      player.initialize("{{ app.asset_path }}");
+      /* config avoid twig conflict */
+      var tfjassApp = angular.module('tfjassApp', ['ui.bootstrap', 'ngRoute', 'ngAnimate']);
+
+      tfjassApp.config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('//');
+        $interpolateProvider.endSymbol('//');
+      });
+
+      /* interceptors for loading spinner */
+      tfjassApp.config(function ($httpProvider) {
+        $httpProvider.interceptors.push(function ($q, $rootScope) {
+            if ($rootScope.activeCalls == undefined) {
+                $rootScope.activeCalls = 0;
+            }
+
+            return {
+                request: function (config) {
+                    $rootScope.activeCalls += 1;
+                    return config;
+                },
+                requestError: function (rejection) {
+                    $rootScope.activeCalls -= 1;
+                    return rejection;
+                },
+                response: function (response) {
+                    $rootScope.activeCalls -= 1;
+                    return response;
+                },
+                responseError: function (rejection) {
+                    $rootScope.activeCalls -= 1;
+                    return rejection;
+                }
+            };
+        });
+      });
+
+      tfjassApp.directive('loadingSpinner', function ($http) {
+        return {
+            restrict: 'A',
+            replace: true,
+            template: '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>',
+            link: function (scope, element, attrs) {
+                scope.$watch('activeCalls', function (newVal, oldVal) {
+                    if (newVal == 0) {
+                        scope.spinnerHide = 1;
+                    }
+                    else {
+                        scope.spinnerHide = 0;
+                    }
+                });
+            }
+        };
+      });
+
+      /* factories */
+      tfjassApp.factory('gethttp', function($http, $q) {
+        this.httpRequest = function(url){
+          var deferred = $q.defer();
+          $http.get(url, { cache: true})
+               .success(function(data) {
+                  deferred.resolve(data);
+               }).error(function(msg, code) {
+                  deferred.reject(msg);
+               });
+          return deferred.promise;
+        };
+        this.postHttpRequest = function(url, postData){
+          return $http.post(
+            url, postData
+          ).error(function(data, status, headers, config) {
+            alert('Une erreur s\'est produite !');
+          });
+        };
+        return this;
+      });
+
+      tfjassApp.factory('convertDate', function($filter) {
+        this.dateYmd = function(dated){
+          return $filter('date')(new Date(dated), 'dd-MM-yyyy')
+        };
+        this.datehm = function(dateh){
+          return $filter('date')(new Date(dateh), 'hh:mm')
+        };
+        return this;
+      });
+
+      /* get info for welcome page */
+      tfjassApp.controller('indexController', function($scope, $sce, gethttp, convertDate) {
+
+        var promise = gethttp.httpRequest("{{ app.url_generator.generate('dataIndex') }}");
+        promise.then(
+          function(data) {
+            data.concertDate = convertDate.dateYmd(data.concertDate.date);
+            data.concertHeure = convertDate.datehm(data.concertHeure.date);
+            $scope.data = data;
+          },
+          function(errorData) {
+              alert(errorData);
+          });
+
+        $scope.bindHtmlContent = function() {
+          if($scope.data)
+            return $sce.trustAsHtml($scope.data.content);
+        };
+
+        $scope.bindNextConcert = function () {
+          if($scope.data){
+            if($scope.data.concertId)
+              return $sce.trustAsHtml($scope.data.concertDate + ' ' + $scope.data.concertHeure + ' : ' + $scope.data.concertLieu + ' - ' + $scope.data.concertPrix);
+            else
+              return $sce.trustAsHtml('Pas de concert de prévu :(');
+          }
+        }
+      });
+
+      /* getconcerts info */
+      tfjassApp.controller('concertController', function($scope, gethttp, convertDate) {
+        var promise = gethttp.httpRequest("{{ app.url_generator.generate('dataConcerts') }}");
+        promise.then(
+          function(data) {
+            var concerts = [];
+            angular.forEach(data, function(value, key) {
+              concerts.push({
+                'concertLieu': value.concertLieu,
+                'concertHeure': convertDate.datehm(value.concertHeure.date),
+                'concertDate': convertDate.dateYmd(value.concertDate.date),
+                'concertPrix':  value.concertPrix
+              });
+            });
+            $scope.concerts = concerts;
+          },
+          function(errorData) {
+              alert(errorData);
+          });
+      });
+
+      /* getbio info */
+      tfjassApp.controller('bioController', function($scope, gethttp, $sce) {
+        var promise = gethttp.httpRequest("{{ app.url_generator.generate('dataBio') }}");
+        promise.then(
+          function(data) {
+            $scope.data = data;
+          },
+          function(errorData) {
+              alert(errorData);
+          });
+        $scope.bindHtmlContent = function() {
+          if($scope.data)
+            return $sce.trustAsHtml($scope.data.content);
+        };
+      });
+
+      /* Contact info */
+      tfjassApp.controller('contactController', function($scope) {});
+
+      /* Sound control */
+      tfjassApp.controller('soundController', function($scope) {
+        $scope.sound = 'on';
+        $scope.mutesound = function(){
+          player.playOrStop();
+          if($scope.sound == 'on'){
+            $scope.sound = 'off';
+          }else{
+            $scope.sound = 'on';
+          }
+        };
+      });
+
+      /* carousel ui bootstrap */
+      /*tfjassApp.controller('CarouselCtrl', function ($scope, gethttp) {
+        $scope.myInterval = 5000;
+        $scope.noWrapSlides = false;
+        $scope.slides = [];
+        gethttp.httpRequest("{{ app.url_generator.generate('dataPhotos') }}").success(function(data, status, headers, config) {
+          $scope.slides = data;
+        });
+      });*/
+
+      /* formulaire inscription newsletter */
+      tfjassApp.controller('newsletterController', function($scope, gethttp) {
+        $scope.newsInscrit = function(newsemail) {
+          gethttp.postHttpRequest(
+            "{{ app.url_generator.generate('dataNews') }}",
+            {email: newsemail}
+          ).success(function(data, status, headers, config) {
+            alert(data.msg);
+          });
+          $scope.newsReset();
+        };
+
+        $scope.newsReset = function() {
+          $scope.newsemail = '';
+        };
+
+        $scope.newsReset();
+      });
+
+      /* formulaire inscription newsletter */
+      tfjassApp.controller('contactFormController', function($scope, gethttp) {
+        $scope.update = function(ctemail, ctmessage) {
+          gethttp.postHttpRequest(
+            "{{ app.url_generator.generate('dataContact') }}",
+            {email: ctemail, message: ctmessage}
+          ).success(function(data, status, headers, config) {
+            alert(data.msg);
+          });
+          $scope.reset();
+        };
+
+        $scope.reset = function() {
+          $scope.ctemail = '';
+          $scope.ctmessage = '';
+        };
+
+        $scope.reset();
+      });
+
+      /* configuring routing */
+      tfjassApp.config(['$routeProvider',
+        function($routeProvider) {
+          $routeProvider.
+            when('/', {
+              templateUrl: '../web/views/mobile/accueil.html',
+              controller: 'indexController'
+            }).
+            when('/biographie', {
+              templateUrl: '../web/views/mobile/biographie.html',
+              controller: 'bioController'
+            }).
+            when('/concert', {
+              templateUrl: '../web/views/mobile/concert.html',
+              controller: 'concertController'
+            }).
+            when('/contact', {
+              templateUrl: '../web/views/mobile/contact.html',
+              controller: 'contactController'
+            }).
+            otherwise({
+              redirectTo: '/'
+            });
+        }]);
+
+    </script>
+  </body>
+</html>
