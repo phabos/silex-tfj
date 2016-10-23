@@ -8,7 +8,7 @@
 	$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 	$app->register(new Silex\Provider\FormServiceProvider());
 	$app->register(new Silex\Provider\ValidatorServiceProvider());
-	
+
 	$app->register(new Silex\Provider\SecurityServiceProvider());
 	$app->register(new Silex\Provider\RememberMeServiceProvider());
 
@@ -18,7 +18,7 @@
 	));
 
 	$app['asset_path'] = $app->share(function () {
-    	return 'http://www.tfjass.fr/web/webroot/';
+    	return 'TODO';
 	});
 
 	$app['galerie_upload_path'] = $app->share(function () {
@@ -26,15 +26,15 @@
 	});
 
 	$app['base_url'] = $app->share(function () {
-    	return 'http://www.tfjass.fr/web/';
+    	return 'TODO';
 	});
 
 	$app->register(new Silex\Provider\SwiftmailerServiceProvider());
 	$app['swiftmailer.options'] = array(
-		'host' => 'smtp.tfjass.fr',
-		'port' => '587',
-		'username' => 'postmaster@tf-jass.fr',
-		'password' => '5LCNSMn6',
+		'host' => 'Cus',
+		'port' => 'xxx',
+		'username' => 'xxx',
+		'password' => 'xxx',
 		'encryption' => null,
 		'auth_mode' => 'login'
 	);
@@ -46,7 +46,7 @@
 		),
 		'twig.path' => $app['twig.path']
 	));
-	
+
 	$app->before(function (Symfony\Component\HttpFoundation\Request $request, Silex\Application $app) {
     	$app['twig']->addGlobal('current_page_name', $request->get("_route"));
 	});
