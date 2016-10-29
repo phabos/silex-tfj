@@ -18,7 +18,7 @@
 	));
 
 	$app['asset_path'] = $app->share(function () {
-    	return 'TODO';
+    	return $app['site.root'].'/../web/webroot';
 	});
 
 	$app['galerie_upload_path'] = $app->share(function () {
@@ -26,7 +26,7 @@
 	});
 
 	$app['base_url'] = $app->share(function () {
-    	return 'TODO';
+    	return $app['site.root'];
 	});
 
 	$app->register(new Silex\Provider\SwiftmailerServiceProvider());
