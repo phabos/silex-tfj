@@ -5,8 +5,8 @@
 
 	require_once __DIR__.'/../vendor/autoload.php';
 
-	if( ! $isProd )
-		Symfony\Component\Debug\Debug::enable();
+	//if( ! $isProd )
+		//Symfony\Component\Debug\Debug::enable();
 
 	$app = new Silex\Application();
 	if( $isProd )

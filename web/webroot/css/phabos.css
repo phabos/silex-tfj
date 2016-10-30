@@ -13,14 +13,14 @@ BODY{
 }
 #fullpage{ }
 #section1{
-	background: url("../img/tf1.jpg") no-repeat center center fixed; 
+	background: url("../img/tf1.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	position: relative;
 }
-#section0 h1.abs {	
+#section0 h1.abs {
 	color: #792221;
     font-family: bilbao;
     font-size: 35px;
@@ -88,14 +88,14 @@ a{color: #792221; text-decoration: underline;}
     position: relative;
 }
 #section2{
-	background: url("../img/tf2.jpg") no-repeat center center fixed; 
+	background: url("../img/tf2.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
 #section3{
-	background: url("../img/tf3.jpg") no-repeat center center fixed; 
+	background: url("../img/tf3.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -116,11 +116,11 @@ a{color: #792221; text-decoration: underline;}
 	background: linear-gradient(to bottom,  #792221 0%,#2d0000 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#792221', endColorstr='#2d0000',GradientType=0 ); /* IE6-9 */
 	z-index:30;
-	-moz-box-shadow: 0px 0px 15px 5px #656565;
-	-webkit-box-shadow: 0px 0px 15px 5px #656565;
-	-o-box-shadow: 0px 0px 15px 5px #656565;
-	box-shadow: 0px 0px 15px 5px #656565;
-	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=15);
+	-moz-box-shadow: 0px 0px 5px 0px #656565;
+	-webkit-box-shadow: 0px 0px 5px 0px #656565;
+	-o-box-shadow: 0px 0px 5px 0px #656565;
+	box-shadow: 0px 0px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=5);
 }
 .page-content1 {
 	padding:120px 20px 20px 20px;
@@ -205,7 +205,7 @@ table td {padding:5px;}
 	width:160px;
 	height:50px;
 	font-family: bilbao;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: normal;
 	color:#fff;
 	background-color:#792221;
@@ -379,16 +379,16 @@ table td {padding:5px;}
 }
 
 @-webkit-keyframes pulse {
-  
+
 }
 @-moz-keyframes pulse {
-  
+
 }
 @-o-keyframes pulse {
- 
+
 }
 @keyframes pulse {
-  
+
 }
 .arrows {
 	opacity: 1;
@@ -522,6 +522,9 @@ table td {padding:5px;}
 	z-index:1000;
 	-webkit-transition: color 3s ease; -moz-transition: color 3s ease; -ms-transition: color 3s ease; -o-transition: color 3s ease; transition: color 3s ease;
 }
+.copy a {
+	text-decoration: none;
+}
 
 #facebook img, #youtube img{
 	bottom: 7px;
@@ -534,29 +537,29 @@ table td {padding:5px;}
     bottom: 11px;
     height: 3px;
     position: absolute;
-    width: 5px;      
+    width: 5px;
     animation: sound 0ms -800ms linear infinite alternate;
 	-webkit-animation: sound 0ms -800ms linear infinite alternate;
 }
 @-webkit-keyframes sound {
     0% {
        opacity: .35;
-        height: 3px; 
+        height: 3px;
     }
     100% {
-        opacity: 1;       
-        height: 28px;        
+        opacity: 1;
+        height: 28px;
     }
 }
 
 @keyframes sound {
     0% {
        opacity: .35;
-        height: 3px; 
+        height: 3px;
     }
     100% {
-        opacity: 1;       
-        height: 28px;        
+        opacity: 1;
+        height: 28px;
     }
 }
 

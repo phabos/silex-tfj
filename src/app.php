@@ -17,16 +17,16 @@
     	'translator.messages' => array(),
 	));
 
-	$app['asset_path'] = $app->share(function () {
-    	return $app['site.root'] . '/web/webroot';
+	$app['asset_path'] = $app->share(function ( Silex\Application $app ) {
+		return $app['site_root'] . '/web/webroot/';
 	});
 
 	$app['galerie_upload_path'] = $app->share(function () {
-    	return __DIR__.'/../web/webroot/galerie/';
+    return __DIR__.'/../web/webroot/galerie/';
 	});
 
-	$app['base_url'] = $app->share(function () {
-    	return $app['site.root'] . '/web/';
+	$app['base_url'] = $app->share(function ( Silex\Application $app ) {
+    return $app['site_root'] . '/web/';
 	});
 
 	$app->register(new Silex\Provider\SwiftmailerServiceProvider());
