@@ -6,3 +6,6 @@ var/*
 node_modules/
 node_modules/*
 static-deploy.sh
+shipitfile.js
+upload/
+upload/*

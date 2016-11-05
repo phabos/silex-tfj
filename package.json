@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "commander": "^2.9.0",
     "shipit-cli": "^1.4.1",
     "shipit-deploy": "^2.2.0"
   },
