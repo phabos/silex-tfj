@@ -19,8 +19,8 @@
 		    );
 
 		    $form = $app['form.factory']->createBuilder(FormType::class, $data)
-		        ->add('email')
-		        ->add('message')
+		        ->add('email', 'text')
+		        ->add('message', 'textarea')
 		        ->getForm();
 
 				$form->handleRequest($request);
