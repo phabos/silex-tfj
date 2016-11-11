@@ -4,6 +4,7 @@
 
 	use Silex\Application;
 	use Symfony\Component\Form\Extension\Core\Type\FormType;
+	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Validator\Constraints as Assert;
 	use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +22,7 @@
 		    );
 
 		    $form = $app['form.factory']->createBuilder(FormType::class, $data)
-		        ->add('email', 'text')
+		        ->add('email', TextType::class)
 		        ->getForm();
 
 			$form->handleRequest($request);

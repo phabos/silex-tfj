@@ -4,6 +4,8 @@
 
 	use Silex\Application;
 	use Symfony\Component\Form\Extension\Core\Type\FormType;
+  use Symfony\Component\Form\Extension\Core\Type\TextType;
+	use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Validator\Constraints as Assert;
 	use TfJass\Type\ContactType;
@@ -19,8 +21,8 @@
 		    );
 
 		    $form = $app['form.factory']->createBuilder(FormType::class, $data)
-		        ->add('email', 'text')
-		        ->add('message', 'textarea')
+		        ->add('email', TextType::class)
+		        ->add('message', TextareaType::class)
 		        ->getForm();
 
 				$form->handleRequest($request);
