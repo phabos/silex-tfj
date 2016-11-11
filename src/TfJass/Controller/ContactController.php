@@ -36,7 +36,7 @@
 					if (count($errors) > 0) {
 						return $app->json(array('error' => '1', 'msg'=>'Votre email est incorrect ou votre message est trop court !'));
 					}else{
-						$message = \Swift_Message::newInstance()
+						/*$message = \Swift_Message::newInstance()
 							        ->setSubject('[tfjass.fr] Formulaire contact')
 							        ->setFrom(array($app['site_email'] => $email))
 							        ->setTo(array($app['admin_email']))
@@ -48,7 +48,7 @@
 						$app['swiftmailer.spooltransport']
 							->getSpool()
 							->flushQueue($app['swiftmailer.transport'])
-						;
+						;*/
 					}
 			  }
 
