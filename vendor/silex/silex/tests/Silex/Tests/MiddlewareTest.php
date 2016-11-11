@@ -31,17 +31,17 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
 
         $app->before(function () use (&$i, $test) {
             $test->assertEquals(0, $i);
-            $i++;
+            ++$i;
         });
 
         $app->match('/foo', function () use (&$i, $test) {
             $test->assertEquals(1, $i);
-            $i++;
+            ++$i;
         });
 
         $app->after(function () use (&$i, $test) {
             $test->assertEquals(2, $i);
-            $i++;
+            ++$i;
         });
 
         $request = Request::create('/foo');
@@ -57,13 +57,13 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->match('/foo', function () use (&$i) {
-            $i++;
+            ++$i;
 
             return new Response('foo');
         });
 
         $app->after(function () use (&$i) {
-            $i++;
+            ++$i;
         });
 
         $request = Request::create('/foo');
@@ -81,27 +81,27 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
 
         $app->before(function () use (&$i, $test) {
             $test->assertEquals(0, $i);
-            $i++;
+            ++$i;
         });
 
         $app->before(function () use (&$i, $test) {
             $test->assertEquals(1, $i);
-            $i++;
+            ++$i;
         });
 
         $app->match('/foo', function () use (&$i, $test) {
             $test->assertEquals(2, $i);
-            $i++;
+            ++$i;
         });
 
         $app->after(function () use (&$i, $test) {
             $test->assertEquals(3, $i);
-            $i++;
+            ++$i;
         });
 
         $app->after(function () use (&$i, $test) {
             $test->assertEquals(4, $i);
-            $i++;
+            ++$i;
         });
 
         $request = Request::create('/foo');
@@ -117,7 +117,7 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->before(function () use (&$i) {
-            $i++;
+            ++$i;
         });
 
         $app->match('/foo', function () {
@@ -125,7 +125,7 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         });
 
         $app->after(function () use (&$i) {
-            $i++;
+            ++$i;
         });
 
         $app->error(function () {
@@ -145,11 +145,11 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
 
         $app->before(function () use (&$i) {
-            $i++;
+            ++$i;
         }, Application::EARLY_EVENT);
 
         $app->after(function () use (&$i) {
-            $i++;
+            ++$i;
         });
 
         $app->error(function () {
@@ -168,9 +168,9 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
 
         $app->before(function () { return new Response('app before'); });
 
-        $app->get('/', function() {
+        $app->get('/', function () {
             return new Response('test');
-        })->before(function() {
+        })->before(function () {
             return new Response('middleware before');
         });
 
@@ -234,6 +234,20 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo---', $app->handle($request)->getContent());
     }
 
+    public function testAfterFilterCanReturnResponse()
+    {
+        $app = new Application();
+
+        $app->after(function (Request $request, Response $response) {
+            return new Response('bar');
+        });
+
+        $app->match('/', function () { return new Response('foo'); });
+
+        $request = Request::create('/');
+        $this->assertEquals('bar', $app->handle($request)->getContent());
+    }
+
     public function testRouteAndApplicationMiddlewareParameterInjection()
     {
         $app = new Application();
@@ -247,14 +261,14 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
             $middlewareTarget[] = 'application_before_middleware_triggered';
         };
 
-        $applicationAfterMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test){
+        $applicationAfterMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test) {
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Request', $request);
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Response', $response);
             $test->assertInstanceOf('\Silex\Application', $app);
             $middlewareTarget[] = 'application_after_middleware_triggered';
         };
 
-        $applicationFinishMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test){
+        $applicationFinishMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test) {
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Request', $request);
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Response', $response);
             $test->assertInstanceOf('\Silex\Application', $app);
@@ -267,7 +281,7 @@ class MiddlewareTest extends \PHPUnit_Framework_TestCase
             $middlewareTarget[] = 'route_before_middleware_triggered';
         };
 
-        $routeAfterMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test){
+        $routeAfterMiddleware = function ($request, $response, $app) use (&$middlewareTarget, $test) {
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Request', $request);
             $test->assertInstanceOf('\Symfony\Component\HttpFoundation\Response', $response);
             $test->assertInstanceOf('\Silex\Application', $app);

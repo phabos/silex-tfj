@@ -8,6 +8,7 @@
 	$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 	$app->register(new Silex\Provider\FormServiceProvider());
 	$app->register(new Silex\Provider\ValidatorServiceProvider());
+	$app->register(new Silex\Provider\HttpFragmentServiceProvider());
 
 	$app->register(new Silex\Provider\SecurityServiceProvider());
 	$app->register(new Silex\Provider\RememberMeServiceProvider());
@@ -31,7 +32,7 @@
 
 	$app->register(new Silex\Provider\SwiftmailerServiceProvider());
 	$app['swiftmailer.options'] = array(
-		'host' => 'Cus',
+		'host' => 'xxx',
 		'port' => 'xxx',
 		'username' => 'xxx',
 		'password' => 'xxx',
