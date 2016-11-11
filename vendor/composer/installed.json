@@ -867,89 +867,6 @@
         ]
     },
     {
-        "name": "symfony/twig-bridge",
-        "version": "v2.8.13",
-        "version_normalized": "2.8.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/twig-bridge.git",
-            "reference": "b9df700554a19c9c00c662f2cd9fb3f03c0d4bcf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/b9df700554a19c9c00c662f2cd9fb3f03c0d4bcf",
-            "reference": "b9df700554a19c9c00c662f2cd9fb3f03c0d4bcf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9",
-            "twig/twig": "~1.27|~2.0"
-        },
-        "require-dev": {
-            "symfony/asset": "~2.7|~3.0.0",
-            "symfony/console": "~2.8|~3.0.0",
-            "symfony/expression-language": "~2.4|~3.0.0",
-            "symfony/finder": "~2.3|~3.0.0",
-            "symfony/form": "~2.8.4",
-            "symfony/http-kernel": "~2.8|~3.0.0",
-            "symfony/polyfill-intl-icu": "~1.0",
-            "symfony/routing": "~2.2|~3.0.0",
-            "symfony/security": "~2.6|~3.0.0",
-            "symfony/security-acl": "~2.6|~3.0.0",
-            "symfony/stopwatch": "~2.2|~3.0.0",
-            "symfony/templating": "~2.1|~3.0.0",
-            "symfony/translation": "~2.7|~3.0.0",
-            "symfony/var-dumper": "~2.7.16|~2.8.9|~3.0.9",
-            "symfony/yaml": "~2.0,>=2.0.5|~3.0.0"
-        },
-        "suggest": {
-            "symfony/asset": "For using the AssetExtension",
-            "symfony/expression-language": "For using the ExpressionExtension",
-            "symfony/finder": "",
-            "symfony/form": "For using the FormExtension",
-            "symfony/http-kernel": "For using the HttpKernelExtension",
-            "symfony/routing": "For using the RoutingExtension",
-            "symfony/security": "For using the SecurityExtension",
-            "symfony/stopwatch": "For using the StopwatchExtension",
-            "symfony/templating": "For using the TwigEngine",
-            "symfony/translation": "For using the TranslationExtension",
-            "symfony/var-dumper": "For using the DumpExtension",
-            "symfony/yaml": "For using the YamlExtension"
-        },
-        "time": "2016-10-24 15:52:36",
-        "type": "symfony-bridge",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Bridge\\Twig\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Twig Bridge",
-        "homepage": "https://symfony.com"
-    },
-    {
         "name": "monolog/monolog",
         "version": "1.21.0",
         "version_normalized": "1.21.0.0",
@@ -1283,223 +1200,6 @@
             "l10n",
             "localization"
         ]
-    },
-    {
-        "name": "symfony/form",
-        "version": "v2.8.13",
-        "version_normalized": "2.8.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/form.git",
-            "reference": "eecd1ca8424542ef5dd094981ac6b36428bd6d46"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/form/zipball/eecd1ca8424542ef5dd094981ac6b36428bd6d46",
-            "reference": "eecd1ca8424542ef5dd094981ac6b36428bd6d46",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9",
-            "symfony/event-dispatcher": "~2.1|~3.0.0",
-            "symfony/intl": "~2.4|~3.0.0",
-            "symfony/options-resolver": "~2.6",
-            "symfony/polyfill-mbstring": "~1.0",
-            "symfony/property-access": "~2.3|~3.0.0"
-        },
-        "conflict": {
-            "symfony/doctrine-bridge": "<2.7",
-            "symfony/framework-bundle": "<2.7",
-            "symfony/twig-bridge": "<2.7"
-        },
-        "require-dev": {
-            "doctrine/collections": "~1.0",
-            "symfony/dependency-injection": "~2.3|~3.0.0",
-            "symfony/http-foundation": "~2.2|~3.0.0",
-            "symfony/http-kernel": "~2.4|~3.0.0",
-            "symfony/security-csrf": "~2.4|~3.0.0",
-            "symfony/translation": "~2.0,>=2.0.5|~3.0.0",
-            "symfony/validator": "~2.8|~3.0.0"
-        },
-        "suggest": {
-            "symfony/framework-bundle": "For templating with PHP.",
-            "symfony/security-csrf": "For protecting forms against CSRF attacks.",
-            "symfony/twig-bridge": "For templating with Twig.",
-            "symfony/validator": "For form validation."
-        },
-        "time": "2016-10-18 04:28:30",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Form\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Form Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "symfony/translation",
-        "version": "v2.8.13",
-        "version_normalized": "2.8.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/translation.git",
-            "reference": "cca6ff892355876534b01a927f789bac9601c935"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/cca6ff892355876534b01a927f789bac9601c935",
-            "reference": "cca6ff892355876534b01a927f789bac9601c935",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9",
-            "symfony/polyfill-mbstring": "~1.0"
-        },
-        "conflict": {
-            "symfony/config": "<2.7"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "~2.8",
-            "symfony/intl": "~2.4|~3.0.0",
-            "symfony/yaml": "~2.2|~3.0.0"
-        },
-        "suggest": {
-            "psr/log": "To use logging capability in translator",
-            "symfony/config": "",
-            "symfony/yaml": ""
-        },
-        "time": "2016-10-18 04:28:30",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Translation\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Translation Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "symfony/validator",
-        "version": "v2.8.13",
-        "version_normalized": "2.8.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/validator.git",
-            "reference": "987bf3a7d585680773bc79f6cf3d9e78340cb02c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/validator/zipball/987bf3a7d585680773bc79f6cf3d9e78340cb02c",
-            "reference": "987bf3a7d585680773bc79f6cf3d9e78340cb02c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9",
-            "symfony/polyfill-mbstring": "~1.0",
-            "symfony/translation": "~2.4|~3.0.0"
-        },
-        "require-dev": {
-            "doctrine/annotations": "~1.0",
-            "doctrine/cache": "~1.0",
-            "egulias/email-validator": "~1.2,>=1.2.1",
-            "symfony/config": "~2.2|~3.0.0",
-            "symfony/expression-language": "~2.4|~3.0.0",
-            "symfony/http-foundation": "~2.3|~3.0.0",
-            "symfony/intl": "~2.7.4|~2.8|~3.0.0",
-            "symfony/property-access": "~2.3|~3.0.0",
-            "symfony/yaml": "~2.0,>=2.0.5|~3.0.0"
-        },
-        "suggest": {
-            "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
-            "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
-            "egulias/email-validator": "Strict (RFC compliant) email validation",
-            "symfony/config": "",
-            "symfony/expression-language": "For using the 2.4 Expression validator",
-            "symfony/http-foundation": "",
-            "symfony/intl": "",
-            "symfony/property-access": "For using the 2.4 Validator API",
-            "symfony/yaml": ""
-        },
-        "time": "2016-10-19 22:37:24",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Validator\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Validator Component",
-        "homepage": "https://symfony.com"
     },
     {
         "name": "swiftmailer/swiftmailer",
@@ -2028,6 +1728,307 @@
             }
         ],
         "description": "Symfony Filesystem Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/form",
+        "version": "v3.1.6",
+        "version_normalized": "3.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/form.git",
+            "reference": "9b7667d56425badaf1fd83402deb1ebe2008f4fe"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/form/zipball/9b7667d56425badaf1fd83402deb1ebe2008f4fe",
+            "reference": "9b7667d56425badaf1fd83402deb1ebe2008f4fe",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "symfony/event-dispatcher": "~2.8|~3.0",
+            "symfony/intl": "~2.8|~3.0",
+            "symfony/options-resolver": "~2.8|~3.0",
+            "symfony/polyfill-mbstring": "~1.0",
+            "symfony/property-access": "~2.8|~3.0"
+        },
+        "conflict": {
+            "symfony/doctrine-bridge": "<2.7",
+            "symfony/framework-bundle": "<2.7",
+            "symfony/twig-bridge": "<2.7"
+        },
+        "require-dev": {
+            "doctrine/collections": "~1.0",
+            "symfony/dependency-injection": "~2.8|~3.0",
+            "symfony/http-foundation": "~2.8|~3.0",
+            "symfony/http-kernel": "~2.8|~3.0",
+            "symfony/security-csrf": "~2.8|~3.0",
+            "symfony/translation": "~2.8|~3.0",
+            "symfony/validator": "~2.8|~3.0"
+        },
+        "suggest": {
+            "symfony/framework-bundle": "For templating with PHP.",
+            "symfony/security-csrf": "For protecting forms against CSRF attacks.",
+            "symfony/twig-bridge": "For templating with Twig.",
+            "symfony/validator": "For form validation."
+        },
+        "time": "2016-10-18 04:30:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Form\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Form Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/translation",
+        "version": "v3.1.6",
+        "version_normalized": "3.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/translation.git",
+            "reference": "ff1285087397d2f64041b35e591f3025881c90cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/ff1285087397d2f64041b35e591f3025881c90cd",
+            "reference": "ff1285087397d2f64041b35e591f3025881c90cd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "symfony/polyfill-mbstring": "~1.0"
+        },
+        "conflict": {
+            "symfony/config": "<2.8"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~2.8|~3.0",
+            "symfony/intl": "~2.8|~3.0",
+            "symfony/yaml": "~2.8|~3.0"
+        },
+        "suggest": {
+            "psr/log": "To use logging capability in translator",
+            "symfony/config": "",
+            "symfony/yaml": ""
+        },
+        "time": "2016-10-18 04:30:12",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Translation\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Translation Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/validator",
+        "version": "v3.1.6",
+        "version_normalized": "3.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/validator.git",
+            "reference": "709dffa9193ee2b88e1fb1760cc0ba5780f1a8b2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/validator/zipball/709dffa9193ee2b88e1fb1760cc0ba5780f1a8b2",
+            "reference": "709dffa9193ee2b88e1fb1760cc0ba5780f1a8b2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "symfony/polyfill-mbstring": "~1.0",
+            "symfony/translation": "~2.8|~3.0"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.0",
+            "doctrine/cache": "~1.0",
+            "egulias/email-validator": "~1.2,>=1.2.1",
+            "symfony/cache": "~3.1",
+            "symfony/config": "~2.8|~3.0",
+            "symfony/expression-language": "~2.8|~3.0",
+            "symfony/http-foundation": "~2.8|~3.0",
+            "symfony/intl": "~2.8|~3.0",
+            "symfony/yaml": "~2.8|~3.0"
+        },
+        "suggest": {
+            "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+            "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
+            "egulias/email-validator": "Strict (RFC compliant) email validation",
+            "psr/cache-implementation": "For using the metadata cache.",
+            "symfony/config": "",
+            "symfony/expression-language": "For using the Expression validator",
+            "symfony/http-foundation": "",
+            "symfony/intl": "",
+            "symfony/property-access": "For using the Expression validator",
+            "symfony/yaml": ""
+        },
+        "time": "2016-10-19 22:38:53",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Validator\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Validator Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/twig-bridge",
+        "version": "v3.1.6",
+        "version_normalized": "3.1.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/twig-bridge.git",
+            "reference": "a75dfd56d7cf8df1843dcf44a0d6d4ef8b72440c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/a75dfd56d7cf8df1843dcf44a0d6d4ef8b72440c",
+            "reference": "a75dfd56d7cf8df1843dcf44a0d6d4ef8b72440c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9",
+            "twig/twig": "~1.27|~2.0"
+        },
+        "require-dev": {
+            "symfony/asset": "~2.8|~3.0",
+            "symfony/console": "~2.8|~3.0",
+            "symfony/expression-language": "~2.8|~3.0",
+            "symfony/finder": "~2.8|~3.0",
+            "symfony/form": "~3.0.4",
+            "symfony/http-kernel": "~2.8|~3.0",
+            "symfony/polyfill-intl-icu": "~1.0",
+            "symfony/routing": "~2.8|~3.0",
+            "symfony/security": "~2.8|~3.0",
+            "symfony/security-acl": "~2.8|~3.0",
+            "symfony/stopwatch": "~2.8|~3.0",
+            "symfony/templating": "~2.8|~3.0",
+            "symfony/translation": "~2.8|~3.0",
+            "symfony/var-dumper": "~2.8.9|~3.0.9|~3.1.3|~3.2",
+            "symfony/yaml": "~2.8|~3.0"
+        },
+        "suggest": {
+            "symfony/asset": "For using the AssetExtension",
+            "symfony/expression-language": "For using the ExpressionExtension",
+            "symfony/finder": "",
+            "symfony/form": "For using the FormExtension",
+            "symfony/http-kernel": "For using the HttpKernelExtension",
+            "symfony/routing": "For using the RoutingExtension",
+            "symfony/security": "For using the SecurityExtension",
+            "symfony/stopwatch": "For using the StopwatchExtension",
+            "symfony/templating": "For using the TwigEngine",
+            "symfony/translation": "For using the TranslationExtension",
+            "symfony/var-dumper": "For using the DumpExtension",
+            "symfony/yaml": "For using the YamlExtension"
+        },
+        "time": "2016-10-24 15:52:44",
+        "type": "symfony-bridge",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Bridge\\Twig\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Twig Bridge",
         "homepage": "https://symfony.com"
     }
 ]
