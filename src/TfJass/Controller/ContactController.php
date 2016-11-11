@@ -3,6 +3,7 @@
 	namespace TfJass\Controller;
 
 	use Silex\Application;
+	use Symfony\Component\Form\Extension\Core\Type\FormType;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Validator\Constraints as Assert;
 	use TfJass\Type\ContactType;
@@ -12,7 +13,15 @@
 
 	    public function formAction(Request $request, Application $app)
 	    {
-				$form = $app['form.factory']->create(new ContactType());
+				$data = array(
+		      'email' => 'Email',
+		      'message' => 'Message',
+		    );
+
+		    $form = $app['form.factory']->createBuilder(FormType::class, $data)
+		        ->add('email')
+		        ->add('message')
+		        ->getForm();
 
 				$form->handleRequest($request);
 
